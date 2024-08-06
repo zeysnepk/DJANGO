@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="d-flex justify-content-center">
+    <div class="col-lg-8">
+        <!-- Post content-->
+        <article>
+            <!-- Post header-->
+            <header class="mb-4">
+                <!-- Post title-->
+                <h2 class="fw-bolder mb-1">{{article.title}}</h2>
+                <!-- Post meta content-->
+                <div class="text-muted fst-italic mb-2">{{article.date}} by {{article.author}}</div>
+            </header>
+            <hr>
+            <!-- Preview image figure-->
+            {% if article.article_image %}
+            <figure class="mb-4"><img class="img-fluid rounded" src="{{ article.article_image.url }}" alt="..." />
+            </figure>
+            {% endif %}
+            <!-- Post content-->
+            <section class="mb-5">
+                <p>{{ article.content|safe }}</p>
+            </section>
+        </article>
+        <hr>
+        <!-- Comments section-->
+        <section class="mb-5">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <!-- Comment form-->
+                    <form method="post" action="{% url 'article:add_comment' article.id %}" class="mb-4">
+                        {% csrf_token %}
+                        <textarea name="content" class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+                        <div class="text-right" style="margin-right: 5px;">
+                            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                        </div>
+                    </form>
+                    <hr>
+                    {% for comment in article.comments.all %}
+                    <!-- Single comment-->
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="{% static 'img/the_girl.png' %}" alt="Commenter's avatar" width="60" height="60" style="margin-left: 10px;"> 
+                        <div class="media-body">
+                            <h5 class="mt-0">{{ comment.comment_name }}</h5>
+                            {{ comment.comment_content }}
+                            <div class="text-muted comment-date" style="font-size: 0.7em; text-align: left;">{{ comment.comment_date }}</div>
+                        </div>
+                    </div>
+                    <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

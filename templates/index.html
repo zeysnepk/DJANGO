@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Anasayfa</title>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center"
+  style="background-color: #f8f9fa; padding: 4rem 2rem; margin-top: 100px; border-radius: 0.3rem;">
+  {% if request.user.is_authenticated %}
+  <h2 class="display-4" style="color: #5e6973;">Welcome, {{ request.user.username }}!</h2>
+  {% else %}
+  <h2 class="display-4" style="color: #5e6973;">Welcome!</h2>
+  {% endif %}
+  <p class="lead" style="color: #6c757d;">This project was made to learn Django</p>
+  <hr class="my-4">
+  <div class="container" style="text-align: left;">
+    <div class="content">
+        <h2>Project Overview:</h2>
+        <p>This Django project is designed to showcase a variety of functionalities and components commonly used in real-world web applications. Throughout the development process, I have focused on several key aspects:</p>
+        <ul>
+            <li><strong>Django Fundamentals:</strong>
+                <ul>
+                    <li><strong>Models:</strong> I have created models to represent the data structure of the application. These models are used to define the database schema and interact with the database efficiently.</li>
+                    <li><strong>Views:</strong> The views handle the logic for processing requests and returning responses. I have implemented both function-based and class-based views to demonstrate their respective advantages.</li>
+                    <li><strong>Templates:</strong> The project includes well-structured templates that define the layout and presentation of the application. I have utilized Django’s template language to create dynamic and reusable HTML templates.</li>
+                </ul>
+            </li>
+            <li><strong>User Authentication:</strong>
+                <ul>
+                    <li><strong>Registration and Login:</strong> I have implemented user authentication features, including user registration, login, and logout functionalities. This allows users to create accounts, access their profiles, and manage their personal information.</li>
+                    <li><strong>Permissions and Access Control:</strong> The project includes permission management to control access to certain views and features based on user roles and authentication status.</li>
+                </ul>
+            </li>
+            <li><strong>Forms and Validation:</strong>
+                <ul>
+                    <li><strong>User Input:</strong> I have created forms to handle user input and validate data before processing it. This includes forms for user registration, contact forms, and other interactive elements.</li>
+                    <li><strong>Error Handling:</strong> The project demonstrates proper error handling and validation feedback to ensure a smooth user experience.</li>
+                </ul>
+            </li>
+            <li><strong>Database Management:</strong>
+                <ul>
+                    <li><strong>CRUD Operations:</strong> The application supports Create, Read, Update, and Delete (CRUD) operations for managing data within the system. This functionality is essential for any interactive web application.</li>
+                    <li><strong>Admin Interface:</strong> I have utilized Django’s built-in admin interface to manage application data efficiently and perform administrative tasks.</li>
+                </ul>
+            </li>
+            <li><strong>Static and Media Files:</strong>
+                <ul>
+                    <li><strong>Static Files:</strong> The project includes static files such as CSS, JavaScript, and images to enhance the user interface and provide a polished look and feel.</li>
+                    <li><strong>Media Files:</strong> I have implemented file handling for user-uploaded content, demonstrating how to manage and serve media files.</li>
+                </ul>
+            </li>
+            <li><strong>Deployment and Best Practices:</strong>
+                <ul>
+                    <li><strong>Configuration:</strong> I have followed best practices for project configuration and settings management, including the use of environment variables and secure configuration.</li>
+                    <li><strong>Deployment:</strong> The project is designed with deployment in mind, following standard procedures for deploying Django applications to production environments.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Thank you for visiting!</p>
+    </div>
+</div>
+  <br>
+  <hr><br>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/-zeynepkaplan" target="_blank" title="LinkedIn Profilim">
+      <img src="{% static 'img/linkedin.png' %}" alt="LinkedIn">
+    </a>
+    <span style="margin-right: 20px;"></span>
+    <a href="https://github.com/zeysnepk" target="_blank" title="Github Profilim">
+      <img src="{% static 'img/github.png' %}" alt="GitHub">
+    </a>
+  </div>
+</div>
+{% endblock %}

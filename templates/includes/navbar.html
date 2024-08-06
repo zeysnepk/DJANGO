@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <a class="navbar-brand" href="{% url 'index' %}">My Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if not request.user.is_authenticated %}disabled{% endif %}" href="{% url 'article:articles' %}">Articles</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link {% if not request.user.is_authenticated %}disabled{% endif %}" href="{% url 'article:dashboard' %}">PANEL</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if not request.user.is_authenticated %}disabled{% endif %}" href="{% url 'user:logout' %}">LOG OUT</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.user.is_authenticated %}disabled{% endif %}" href="{% url 'user:login' %}">LOGIN</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.user.is_authenticated %}disabled{% endif %}" href="{% url 'user:register' %}">REGISTER</a>
+        </li>
+      </ul>    
+    </div>
+</nav>

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="row">
+  <div class="col-lg-7">
+    <br><br>
+    <h1 class="fw-bolder mb-2">Articles</h1>
+  </div>
+  <div class="col-lg-5">
+    <!-- Search widget-->
+    <form>
+      {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-header">Search</div>
+            <div class="card-body">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="keyword" placeholder="Enter search term..."
+                        aria-label="Enter search term..." aria-describedby="button-search" />
+                    <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>
+</div>
+<hr>
+{% if articles %}
+{% for article in articles %}
+<div style="margin-top:100px;" class="jumbotron text-center">
+  <h1 class="display-5">{{ article.title }}</h1>
+  {% if article.article_image %}
+  <hr>
+  <figure class="mb-4"><img class="img-fluid rounded" src="{{ article.article_image.url }}" alt="..." /></figure>
+  {% endif %}
+  <hr class="my-4">
+  <p>{{ article.content|safe|truncatewords:20 }}</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'article:detail' article.id %}" role="button">Read More</a>
+  </p>
+  <div class="text-muted fst-italic mb-1">{{article.date}} by {{article.author}}</div>
+</div>
+{% endfor %}
+
+{% else %}
+<div class="alert alert-danger">Article Not Found</div>
+{% endif %}
+{% endblock %}

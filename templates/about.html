@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    <title>Anasayfa</title>
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h3>HAKKIMDA</h3>
+        <br><br>
+        <p>Merhaba! Ben Zeynep, Elektronik ve Haberleşme Mühendisliği öğrencisiyim. Python ve web geliştirme konularına olan ilgimle çeşitli projeler üzerinde çalışıyorum. Bu sunucu ile Trendyol'daki ürünlerinizin fiyatlarını kolayca takip edebilir ve fiyat düştüğünde anında bildirim alabilirsiniz. Bildirimini almak istediğiniz ürünün url adresini aşağıdaki 'Ürün Ekle' bölümünden girebilir, dilerseniz de hedef fiyat belirleyebilirsiniz. Ayrıca üst bölümdeki 'Ürünlerim' sekmesinden eklediğiniz ürünlerin özelliklerini göreüntüleyebilir veya silebilirsiniz.</p>
+        <p>Geri dönüşleriniz için aşağıya bıraktığım bağlantılarla bana ulaşabilirsiniz.</p>
+        <p>Şimdiden teşekkürler.</p>
+        <br><hr><br>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/-zeynepkaplan" target="_blank" title="LinkedIn Profilim">
+                <img src="{% static 'img/linkedin.png' %}" alt="LinkedIn">
+            </a>
+            <span style="margin-right: 20px;"></span>
+            <a href="https://github.com/zeysnepk" target="_blank" title="Github Profilim">
+                <img src="{% static 'img/github.png' %}" alt="GitHub">
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="jumbotron text-center" style="background-color: #f8f9fa; padding: 4rem 2rem; margin-top: 100px; border-radius: 0.3rem;">
+    {% if request.user.is_authenticated %}
+        <h1 class="display-4" style="color: #5e6973;">Welcome, {{ request.user.username }}!</h1>
+      {% else %}
+        <h1 class="display-4" style="color: #5e6973;">Welcome!
+      {% endif %}
+      </h1>
+        <p class="lead" style="color: #6c757d;">This project was made to learn Django</p>
+        <hr class="my-4">
+        <p style="color: #495057;">You can add your articles and edit them in detail, you can also comment on other users' articles </p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button" style="background-color: #007bff; border-color: #007bff;">Learn More</a>
+        </p>
+    </div>
+{% endblock %}
