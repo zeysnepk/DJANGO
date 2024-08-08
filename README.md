@@ -34,39 +34,50 @@ Virtualenv (optional but recommended)
 Installation
 
 Clone the Repository: 
+
 -git clone https://github.com/zeysnepk/DJANGO.git
+
 -cd DJANGO
 
 Set Up a Virtual Environment:
+
 -python -m venv env
+
 -source env/bin/activate
 
 Install Dependencies:
+
 -pip install -r requirements.txt
 
 Apply Migrations:
+
 -python manage.py migrate
 
 Create a Superuser:
+
 -python manage.py createsuperuser
 
 Run the Development Server:
+
 -python manage.py runserver
 
 Access the Application:
 Open your web browser and go to http://127.0.0.1:8000/ to see the application in action.
 
 Usage
+
 Creating a New Article
 1. Log in to the application using your credentials.
 2. Navigate to the "Add Article"(PANEL) page.
 3. Enter the title, content, and any images you'd like to include.
 4. Click "Save" to publish the article.
+
 Editing an Article
 1. Go to the article you want to edit.
 2. Click the "Edit" button.
 3. Make your changes to the content.
 4. Click "Save" to update the article.
+
 Deleting an Article
 1. Navigate to the article you want to delete.
 2.Click the "Delete" button.
